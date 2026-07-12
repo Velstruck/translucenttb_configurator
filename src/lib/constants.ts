@@ -126,7 +126,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       type: "object" as const,
       properties: {
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -137,7 +137,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       properties: {
         enabled: { type: "boolean" as const },
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -148,7 +148,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       properties: {
         enabled: { type: "boolean" as const },
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -159,7 +159,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       properties: {
         enabled: { type: "boolean" as const },
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -170,7 +170,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       properties: {
         enabled: { type: "boolean" as const },
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -181,7 +181,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       properties: {
         enabled: { type: "boolean" as const },
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -192,7 +192,7 @@ export const TRANSLUCENTTB_SCHEMA = {
       properties: {
         enabled: { type: "boolean" as const },
         accent: { type: "string" as const, enum: ["normal", "opaque", "clear", "blur", "acrylic"] },
-        color: { type: "string" as const, description: "Hex color in #AARRGGBB format" },
+        color: { type: "string" as const, description: "Hex color in #RRGGBBAA format" },
         show_peek: { type: "boolean" as const },
         show_line: { type: "boolean" as const },
       },
@@ -216,10 +216,15 @@ export const TRANSLUCENTTB_SCHEMA = {
 
 export const GEMINI_SYSTEM_PROMPT = `You are an expert Windows TranslucentTB configuration generator. The user will describe how they want their Windows taskbar to look in different states. You must output a valid JSON configuration matching the provided schema. 
 
-**CRITICAL RULES FOR WINDOWS 11 RENDERING BUGS:**
-1. **Hex Format:** TranslucentTB uses the #AARRGGBB format (Alpha, Red, Green, Blue). To prevent unexpected red or blue tints when the user asks for dark/black colors, ensure the R, G, and B channels are balanced (e.g., #FF151515 for dark slate, NOT #FF101015). Use #00000000 for full transparency.
-2. **The Desktop Opaque Bug:** Never use the 'opaque' accent for the 'desktop_appearance' state. Windows 11 fights this hook and will bleed the user's system accent color (often red or blue) onto the taskbar. 
-3. **The 'Faux-Opaque Blur' Workaround:** If a user requests a completely solid/opaque color for any state, you MUST use the 'blur' accent combined with a fully solid Alpha channel (e.g., 'FF' in #FF151515). This forces the Windows Desktop Window Manager (DWM) composition engine to stay active during state transitions, preventing the system accent color from hijacking the taskbar when switching between the desktop and visible windows.
+**CRITICAL COLOR RULES:**
+
+**Hex Format:** TranslucentTB uses standard web hex formats: #RRGGBB (for solid colors) or #RRGGBBAA (where AA is the alpha/opacity at the VERY END). DO NOT put the alpha channel at the beginning.
+
+**Transparency:** Use #00000000 for full transparency.
+
+**The Desktop Opaque Bug:** Never use the 'opaque' accent for the 'desktop_appearance' state. Windows 11 fights this hook and will bleed the user's system accent color.
+
+**The 'Faux-Opaque Blur' Workaround:** If a user requests a completely solid/opaque color for any state, you MUST use the 'blur' accent combined with a fully solid hex code (e.g., #151515 or #151515FF). This forces the Windows Desktop Window Manager (DWM) engine to stay active, preventing system accent colors from hijacking the taskbar.
 
 **SECURITY & OFF-TOPIC RULE:** If the user pastes code, asks for a code review, or tries to chat about anything other than TranslucentTB configurations, IGNORE IT. You must still output a valid default TranslucentTB JSON configuration. Do NOT hijack JSON fields (like \`verbosity\`) to answer their question. 
 

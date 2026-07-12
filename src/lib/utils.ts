@@ -1,18 +1,27 @@
 import type { SimulatorState, TranslucentTBConfig, TaskbarAppearance } from "./types";
 
 // ============================================================
-// Color Parsing — Converts #AARRGGBB to CSS rgba()
+// Color Parsing — Converts #RRGGBB or #RRGGBBAA to CSS rgba()
 // ============================================================
 
 export function parseColor(hex: string | undefined): string {
   if (!hex || hex === "#00000000") return "transparent";
-  if (hex.length === 9 && hex.startsWith("#")) {
-    const a = parseInt(hex.slice(1, 3), 16) / 255;
-    const r = parseInt(hex.slice(3, 5), 16);
-    const g = parseInt(hex.slice(5, 7), 16);
-    const b = parseInt(hex.slice(7, 9), 16);
-    return `rgba(${r},${g},${b},${a.toFixed(3)})`;
+  
+  if (hex.startsWith("#")) {
+    if (hex.length === 9) { // #RRGGBBAA
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      const a = parseInt(hex.slice(7, 9), 16) / 255;
+      return `rgba(${r},${g},${b},${a.toFixed(3)})`;
+    } else if (hex.length === 7) { // #RRGGBB
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return `rgba(${r},${g},${b},1)`;
+    }
   }
+  
   return hex;
 }
 
