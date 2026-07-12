@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.5.17",
+    "@clerk/themes": "^2.4.57",
     "@google/generative-ai": "^0.24.1",
     "@supabase/supabase-js": "^2.109.0",
     "framer-motion": "^12.42.2",
