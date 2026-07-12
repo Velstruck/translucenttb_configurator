@@ -9,6 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.5.17",
+    "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.109.0",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.24.0",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"

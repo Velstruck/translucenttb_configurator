@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TranslucentTB Configs
+
+A modern, web-based configurator and AI generator for [TranslucentTB](https://github.com/TranslucentTB/TranslucentTB), the popular Windows taskbar utility. 
+
+This Next.js application allows users to visually build, preview, and generate dynamic configurations for how their taskbar reacts to various Windows states (Desktop, Maximized Window, Start Menu Opened, etc.).
+
+## Features
+
+- 🖥️ **Manual Builder & Visualizer:** Select from built-in presets (Dynamic Glass, Midnight Slate, Nordic Frost, Minimalist) and instantly see how your taskbar will look across different Windows simulation states using the mock desktop environment.
+- 🤖 **AI Studio:** Powered by Google Gemini. Describe your perfect taskbar vibe in natural language (e.g., *"Make it completely transparent on the desktop, but blur with a dark red tint when a window is maximized"*) and the AI will generate the strict JSON configuration for you.
+- 💾 **Cloud Dashboard:** Sign in with Clerk to securely save up to 10 of your favorite configurations to your personal dashboard (powered by Supabase) for easy retrieval and copying later.
+- 📋 **One-Click Copy:** Easily copy the generated JSON directly to your clipboard to paste into your TranslucentTB `config.json` file.
+
+## Tech Stack
+
+- **Framework:** Next.js 14+ (App Router)
+- **Styling:** Tailwind CSS & Framer Motion
+- **Authentication:** Clerk
+- **Database:** Supabase (PostgreSQL)
+- **AI Engine:** Google Gemini (Structured JSON Outputs)
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository and install dependencies:
+   ```bash
+   npm install
+   ```
+2. Copy the `.env.example` file to `.env.local` and add your API keys (Clerk, Supabase, Gemini).
+3. Set up the Supabase database using the included `supabase_setup.sql` script.
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
