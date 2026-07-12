@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256" height="256" width="256">
+  <defs>
+    <linearGradient y2="100%" x2="50%" y1="20%" x1="50%" id="logoGlow">
+      <stop stop-color="#67E8F9" offset="0%"></stop>
+      <stop stop-color="#3B82F6" offset="100%"></stop>
+    </linearGradient>
+    
+    <filter height="200%" width="200%" y="-50%" x="-50%" id="softGlow">
+      <feGaussianBlur result="coloredBlur" stdDeviation="6" in="SourceGraphic"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  
+  
+  <circle filter="url(#softGlow)" opacity="0.25" stroke-width="18" stroke="#67E8F9" fill="none" r="78" cy="128" cx="128"></circle>
+  
+  
+  <circle fill="#1E2937" r="62" cy="128" cx="128"></circle>
+  
+  
+  <circle opacity="0.35" fill="url(#logoGlow)" r="62" cy="128" cx="128"></circle>
+  
+  
+  <circle fill="#0F172A" r="42" cy="128" cx="128"></circle>
+  
+  
+  <text stroke-width="4" stroke="#0F172A" paint-order="stroke fill" letter-spacing="-6" font-weight="900" font-size="78" font-family="Arial Black, sans-serif" fill="#67E8F9" text-anchor="middle" y="133" x="128">T</text>
+
+  
+  <circle opacity="0.55" stroke-width="6" stroke="#BAE6FD" fill="none" r="48" cy="128" cx="128"></circle>
+
+  
+  <text letter-spacing="4.5" font-weight="700" font-size="25.5" font-family="system-ui, -apple-system, sans-serif" fill="#E0F2FE" text-anchor="middle" y="217" x="128">CONFIG</text>
+
+</svg>

@@ -6,11 +6,16 @@ import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"], 
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "TranslucentTB AI Configurator",
+  icons: {
+    icon: "/diagram.svg",
+    shortcut: "/diagram.svg",
+    apple: "/diagram.svg",
+  },
   description:
     "Create, preview, and save dynamic JSON configurations for TranslucentTB. Features a manual builder with presets and an AI-powered generator.",
   keywords: ["TranslucentTB", "Windows", "taskbar", "customization", "AI", "configurator"],

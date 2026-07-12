@@ -7,7 +7,7 @@ import { Monitor, Sparkles, LayoutDashboard, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
+import TbConfigIcon from './TbConfigIcon';
 const navLinks = [
   { href: "/", label: "Builder", icon: Monitor },
   { href: "/ai-studio", label: "AI Studio", icon: Sparkles },
@@ -24,8 +24,9 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/25 transition-shadow group-hover:shadow-indigo-500/40">
-            <Monitor className="h-5 w-5 text-white" />
+          <div className="relative flex h-9 w-9 items-center justify-center">
+            {/* <Monitor className="h-5 w-5 text-white" /> */}
+            <TbConfigIcon size={52}/>
           </div>
           <span className="text-lg font-bold tracking-tight text-white">
             Translucent<span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">TB Configs</span>
